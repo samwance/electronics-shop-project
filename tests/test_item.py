@@ -25,3 +25,13 @@ def test_apply_discount(testing_item):
     testing_item.pay_rate = 0.5
     testing_item.apply_discount()
     assert testing_item.price == 50
+
+def test_name_property(testing_item):
+    """Проверяем работу геттера и сеттера для атрибута name"""
+    assert testing_item.name == 'Тестовый образец'
+
+    testing_item.name = 'Персональный компьютер'
+    assert testing_item.name == 'Персональн'
+
+    testing_item.name = 'Ноутбук'
+    assert testing_item.name == 'Ноутбук'
