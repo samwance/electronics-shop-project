@@ -35,3 +35,7 @@ def test_name_property(testing_item):
 
     testing_item.name = 'Ноутбук'
     assert testing_item.name == 'Ноутбук'
+
+def test_repr(testing_item):
+    assert repr(testing_item) == "Item('Тестовый образец', 100, 5)"
+    assert str(testing_item) == 'Тестовый образец'
