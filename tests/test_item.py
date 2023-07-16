@@ -1,5 +1,6 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
-from src.item import Item
+import pytest
+from src.item import Item, InstantiateCSVError
 
 
 def test_item_init(testing_item):
@@ -40,3 +41,12 @@ def test_repr(testing_item):
     assert repr(testing_item) == "Item('Testing file', 100, 5)"
     assert str(testing_item) == 'Testing file'
 
+
+def test_instantiate_from_wrong_csv_link():
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv("items1.csv")
+
+
+def test_instantiate_from_damaged_csv():
+    with pytest.raises(InstantiateCSVError):
+        Item.instantiate_from_csv("C:\\Users\\odint\\PycharmProjects\\electronics-shop-project\\src\\fail_items.csv")
